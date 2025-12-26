@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Typing Speed Test</h1>
+    <p class="subtitle">Focus for 60 seconds.</p>
+
+    <div id="quote"></div>
+
+    <textarea
+      id="input"
+      placeholder="Start typing here..."
+      spellcheck="false"
+      disabled
+    ></textarea>
+
+    <div class="stats">
+      <div>⏱ <span id="time">60</span>s</div>
+      <div>⚡ <span id="wpm">0</span> WPM</div>
+      <div>🎯 <span id="accuracy">0</span>%</div>
+    </div>
+
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="finish">Finish</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
