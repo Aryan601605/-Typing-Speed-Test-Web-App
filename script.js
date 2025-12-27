@@ -16,16 +16,19 @@ let time = 60;
 let timer = null;
 let isRunning = false;
 
-// Render quote
+// 🔐 Logged-in user
+const user = localStorage.getItem("loggedInUser");
+
+// 📝 Render Quote
 function renderQuote() {
   quoteEl.innerHTML = quoteText
     .split("")
-    .map(char => `<span>${char}</span>`)
+    .map(ch => `<span>${ch}</span>`)
     .join("");
 }
 renderQuote();
 
-// ▶ Start / Resume
+// ▶ Start Test
 startBtn.onclick = () => {
   if (isRunning) return;
 
@@ -37,47 +40,42 @@ startBtn.onclick = () => {
     time--;
     timeEl.innerText = time;
 
-    if (time === 0) {
-      finishTest();
-    }
+    if (time === 0) finishTest();
   }, 1000);
 };
 
-// ⏸ Stop / Pause
+// ⏸ Pause Test
 stopBtn.onclick = () => {
-  if (!isRunning) return;
-
   clearInterval(timer);
   isRunning = false;
   input.disabled = true;
 };
 
-// ⛔ Finish
-finishBtn.onclick = () => {
-  finishTest();
-};
+// ⛔ Finish Test
+finishBtn.onclick = finishTest;
 
 function finishTest() {
   clearInterval(timer);
   isRunning = false;
   input.disabled = true;
+
   saveBestWPM();
-  alert("Test Finished! Stay consistent 💪");
+  alert("Test Finished! Keep practicing 💪");
 }
 
-// Typing logic
+// ✍ Typing Logic
 input.addEventListener("input", () => {
   const typed = input.value.split("");
   const chars = quoteEl.querySelectorAll("span");
 
-  let correctChars = 0;
+  let correct = 0;
 
-  chars.forEach((char, index) => {
-    if (typed[index] == null) {
+  chars.forEach((char, i) => {
+    if (!typed[i]) {
       char.className = "";
-    } else if (typed[index] === char.innerText) {
+    } else if (typed[i] === char.innerText) {
       char.className = "correct";
-      correctChars++;
+      correct++;
     } else {
       char.className = "wrong";
     }
@@ -88,7 +86,7 @@ input.addEventListener("input", () => {
 
   wpmEl.innerText = minutes > 0 ? Math.round(words / minutes) : 0;
   accuracyEl.innerText =
-    typed.length > 0 ? Math.round((correctChars / typed.length) * 100) : 0;
+    typed.length > 0 ? Math.round((correct / typed.length) * 100) : 0;
 });
 
 // 🔄 Reset
@@ -106,12 +104,15 @@ resetBtn.onclick = () => {
   renderQuote();
 };
 
-// 💾 Backend-like feature (localStorage)
+// 💾 Save Best WPM (user-specific)
 function saveBestWPM() {
-  const best = localStorage.getItem("bestWPM") || 0;
+  if (!user) return;
+
+  const key = user + "_bestWPM";
+  const best = localStorage.getItem(key) || 0;
   const current = Number(wpmEl.innerText);
 
   if (current > best) {
-    localStorage.setItem("bestWPM", current);
+    localStorage.setItem(key, current);
   }
 }

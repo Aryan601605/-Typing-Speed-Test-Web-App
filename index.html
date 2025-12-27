@@ -7,33 +7,39 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Typing Speed Test</h1>
-    <p class="subtitle">Focus for 60 seconds.</p>
+<div class="container">
+  <h1>Typing Speed Test</h1>
+  <p class="subtitle">Focus for 60 seconds.</p>
 
-    <div id="quote"></div>
-
-    <textarea
-      id="input"
-      placeholder="Start typing here..."
-      spellcheck="false"
-      disabled
-    ></textarea>
-
-    <div class="stats">
-      <div>⏱ <span id="time">60</span>s</div>
-      <div>⚡ <span id="wpm">0</span> WPM</div>
-      <div>🎯 <span id="accuracy">0</span>%</div>
-    </div>
-
-    <div class="buttons">
-      <button id="start">Start</button>
-      <button id="stop">Stop</button>
-      <button id="finish">Finish</button>
-      <button id="reset">Reset</button>
-    </div>
+  <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+    <button onclick="location.href='profile.html'">Profile</button>
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <script src="script.js"></script>
+  <div id="quote"></div>
+
+  <textarea
+    id="input"
+    placeholder="Start typing here..."
+    spellcheck="false"
+    disabled
+  ></textarea>
+
+  <div class="stats">
+    <div>⏱ <span id="time">60</span>s</div>
+    <div>⚡ <span id="wpm">0</span> WPM</div>
+    <div>🎯 <span id="accuracy">0</span>%</div>
+  </div>
+
+  <div class="buttons">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="finish">Finish</button>
+    <button id="reset">Reset</button>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
