@@ -1,3 +1,5 @@
+
+
 const quoteText =
   "JavaScript is a powerful language used to make web pages interactive.";
 
