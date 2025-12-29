@@ -1,3 +1,28 @@
+// 🔐 Auth Elements
+const loginBtn = document.getElementById("loginBtn");
+const signupBtn = document.getElementById("signupBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Logged-in user
+const user = localStorage.getItem("loggedInUser");
+
+// 👁 Show / Hide buttons based on login state
+if (user) {
+  // User logged in
+  if (loginBtn) loginBtn.style.display = "none";
+  if (signupBtn) signupBtn.style.display = "none";
+  if (logoutBtn) logoutBtn.style.display = "inline-block";
+} else {
+  // User NOT logged in
+  if (loginBtn) loginBtn.style.display = "inline-block";
+  if (signupBtn) signupBtn.style.display = "inline-block";
+  if (logoutBtn) logoutBtn.style.display = "none";
+}
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  alert("Logged out successfully!");
+  window.location.href = "login.html";
+}
 
 
 const quoteText =

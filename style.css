@@ -92,6 +92,45 @@ textarea:focus {
   cursor: pointer;
 }
 
+/* Top right auth buttons */
+.top-auth {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.auth-btn {
+  text-decoration: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.auth-btn.login {
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+}
+
+.auth-btn.login:hover {
+  background: #38bdf8;
+  color: #020617;
+}
+
+.auth-btn.signup {
+  background: #22c55e;
+  color: #020617;
+}
+
+.auth-btn.signup:hover {
+  background: #16a34a;
+}
+
+
 #start { background: #22c55e; }
 #stop { background: #facc15; }
 #finish { background: #ef4444; color: white; }
